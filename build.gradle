@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'io.quarkus'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+    implementation 'org.amqphub.quarkus:quarkus-qpid-jms'
+    implementation 'io.quarkus:quarkus-smallrye-reactive-messaging-amqp'
+    implementation 'io.quarkus:quarkus-smallrye-reactive-messaging-mqtt'
+    implementation 'io.quarkus:quarkus-smallrye-reactive-messaging'
+    implementation 'io.quarkus:quarkus-kafka-client'
+    implementation 'io.quarkus:quarkus-smallrye-reactive-messaging-kafka'
+    implementation 'io.quarkus:quarkus-artemis-jms'
+    implementation 'io.quarkiverse.googlecloudservices:quarkus-google-cloud-pubsub'
+    implementation 'io.quarkus:quarkus-kafka-streams'
+    implementation 'io.quarkus:quarkus-reactive-messaging-http'
+    implementation 'io.quarkus:quarkus-arc'
+    implementation 'io.quarkus:quarkus-resteasy'
+    testImplementation 'io.quarkus:quarkus-junit5'
+    testImplementation 'io.rest-assured:rest-assured'
+}
+
+group 'com.github.hdulay'
+version '1.0.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-parameters'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
